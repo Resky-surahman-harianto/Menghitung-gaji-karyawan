@@ -1,0 +1,60 @@
+package guiku;
+
+import java.util.Scanner;
+
+public class Guiku {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("========================================================");
+        System.out.println("                 Menghitung gaji karyawan");
+        System.out.println("========================================================");
+        System.out.print("Nama karyawan               : ");
+        String nama = input.nextLine();
+
+        System.out.print("Golongan karyawan           : ");
+        String golongan = input.nextLine().toUpperCase();
+        
+        int jamKerja = 0;
+        try{
+        System.out.print("Jam kerja karyawan / Minggu : ");
+        jamKerja = input.nextInt();
+        }catch(Exception e){
+            System.err.println("Masukan input nomor");
+        }
+        
+        int upah = 0;
+        switch (golongan) {
+            case "A":
+                upah = 5000*jamKerja;
+                break;
+            case "B":
+                upah = 7000*jamKerja;
+                break;
+            case "C":
+                upah = 8000*jamKerja;
+                break;
+            case "D":
+                upah = 10000*jamKerja;
+                break;
+            default:
+                System.err.print("Input tidak di kenali");
+                break;
+        }
+        
+        int lembur = 0;
+        if (jamKerja < 48) {
+//            Jika jam kerja < dari 48 jam / minggu maka tidak dapat apa apa
+        }else if(jamKerja > 48){
+            lembur = (jamKerja - 48)*4000;
+        }
+        int gaji = upah + lembur;
+        
+        System.out.println("\nKaryawan : " + nama + " Menerima upah Rp." + gaji + " / Minggu");
+        System.out.println("========================================================");
+        
+    }
+
+}
